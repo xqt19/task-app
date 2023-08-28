@@ -1,25 +1,43 @@
-import logo from '../logo.svg';
-import './Home.css';
+import React from 'react'
+class Home extends React.Component{
+   constructor(){
+        super()
+        this.state={
+            num: 0
+        }
+   }
+   handleClick=(x)=>{
+           this.setState({
+               num: this.state.num + x
+           })
+   }
+   render(){
+      const numstyle = {fontSize: "100px", padding: "15px 30px"}
+      return (
+        <div className = "App">
+            <span style={numstyle}>{this.state.num}</span><br />
+           <Counter add={1} handleClick={this.handleClick}/>
+           <Counter add={3} handleClick={this.handleClick}/>
+           <Counter add={5} handleClick={this.handleClick}/>
+        </div>
+      );
+   }
 
-function Home() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React 12345
-        </a>
-      </header>
-    </div>
-  );
+
 }
+
+class Counter extends React.Component{
+    constructor(){
+        super()
+    }
+    render(){
+    const buttonstyle = {backgroundColor: "green", color: "white", fontSize: "16px", padding: "15px 30px", width: "100px"}
+    return(
+        <div>
+             <button style={buttonstyle} onClick={()=> {this.props.handleClick(this.props.add)}  }>+{this.props.add}</button>
+        </div>
+    )}
+}
+
 
 export default Home;
