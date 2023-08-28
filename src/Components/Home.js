@@ -7,9 +7,11 @@ class Home extends React.Component{
         }
    }
    handleClick=(x)=>{
-           this.setState({
-               num: this.state.num + x
-           })
+           this.setState(
+                (prevState)=>{
+                    return {num: prevState.num + x}
+                }
+           )
    }
    render(){
       const numstyle = {fontSize: "100px", padding: "15px 30px"}
